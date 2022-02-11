@@ -7,11 +7,11 @@ import useSWR from 'swr';
 const formatter = Intl.NumberFormat( 'ko-KR' );
 
 const data = [
-    { name: '오늘의 커피', price: 2500 ,chkType: '선택'},
-    { name: '에스프레소', price: 2800 ,chkType: '선택'},
-    { name: '아메리카노', price: 3000 ,chkType: '선택'},
-    { name: '카페라떼', price: 3500 ,chkType: '선택'},
-    { name: '카페모카', price: 3800 ,chkType: '선택'},
+    { name: '오늘의 커피', price: 2500 },
+    { name: '에스프레소', price: 2800 },
+    { name: '아메리카노', price: 3000 },
+    { name: '카페라떼', price: 3500 },
+    { name: '카페모카', price: 3800 },
   ];
 
 const OrderComp = () => {
