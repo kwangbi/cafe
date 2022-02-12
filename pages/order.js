@@ -6,14 +6,24 @@ import useSWR from 'swr';
 
 const formatter = Intl.NumberFormat( 'ko-KR' );
 
-const data = [
-    { name: '오늘의 커피', price: 2500 },
-    { name: '에스프레소', price: 2800 },
-    { name: '아메리카노', price: 3000 },
-    { name: '카페라떼', price: 3500 },
-    { name: '카페모카', price: 3800 },
-    { name: '마끼야또', price: 4000 },
-  ];
+// const data = [
+//     { name: '오늘의 커피', price: 2500 },
+//     { name: '에스프레소', price: 2800 },
+//     { name: '아메리카노', price: 3000 },
+//     { name: '카페라떼', price: 3500 },
+//     { name: '카페모카', price: 3800 },
+//     { name: '마끼야또', price: 4000 },
+//   ];
+
+  const getMenuData = function(url) {
+      return axios.get(url)
+      .then(
+          res => res.data
+      )
+      .catch(
+          err => console.log(err)
+      )
+  }
 
 const OrderComp = () => {
     const [ selected, setSelected ] = useState( [] );    
@@ -67,6 +77,16 @@ const OrderComp = () => {
         orderConfirm,
         cancelConfirm
     )
+ 
+    const {data,err} = useSWR('./api/menu',getMenuData);
+
+    if(err){
+        return <> 에러가 발생했습니다.</>
+    }
+
+    if(!data){
+        return <>로딩중입니다.!!!!</>
+    }
  
     return (
         <div className='container'>
