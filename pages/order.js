@@ -16,7 +16,7 @@ const formatter = Intl.NumberFormat( 'ko-KR' );
 //   ];
 
   const getMenuData = function(url) {
-      return axios.get(url)
+      return axios.get(url) 
       .then(
           res => res.data
       )
